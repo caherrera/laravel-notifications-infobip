@@ -29,29 +29,22 @@ composer require caherrera/laravel-notifications-infobip
 ```
 
 ### Setting up your Infobip account
-Add your Infobip Account Username, Password, and From Number to your `config/services.php`:
+Add this settings to `config/services.php`:
 
 ```php
 // config/services.php
 ...
-'infobip' => [
-    'username' => env('INFOBIP_USERNAME'),
-    'password' => env('INFOBIP_PASSWORD'),
-    'from' => env('INFOBIP_FROM', 'IBTEST'),
-],
+    'infobip' => [
+        'auth'        => env('INFOBIP_AUTH','basic'),
+        'username'    => env('INFOBIP_USERNAME'),
+        'password'    => env('INFOBIP_PASSWORD'),
+        'baseUrl'     => env('INFOBIP_BASE_URL'),
+        'apikey'      => env('INFOBIP_PUBLIC_KEY'),
+        'scenarioKey' => env('INFOBIP_SCENARIO_KEY'),
+    ],
 ...
 ```
-
 To change `Base URL` to personal use this ([See more](https://dev.infobip.com/getting-started/base-url))
-
-```php
-...
-'infobip' => [
-    ...
-    'baseUrl' => env('INFOBIP_BASE_URL', null),
-],
-...
-```
 
 ## Usage
 Now you can use the channel in your `via()` method inside the notification:
@@ -70,8 +63,12 @@ class AccountApproved extends Notification
 
     public function toInfobip($notifiable)
     {
-        return (new InfobipMessage())
-            ->content("Your {$notifiable->service} account was approved!");
+    	$message = new InfobipMessage();
+		$message->setTemplateName("infobip_test_hsm");
+		$message->setTemplateNamespace("whatsapp:hsm:it:infobip");
+		$message->setTemplateData(["Jhon","Snow"]);
+		$message->setLanguage("es");
+        return $message;
     }
 }
 ```
@@ -89,8 +86,10 @@ public function routeNotificationForInfobip()
 
 #### InfobipMessage
 
-- `from('')`: Accepts a phone to use as the notification sender.
-- `content('')`: Accepts a string value for the notification body.
+- `setTemplateName('')`: Accepts a string value.
+- `setTemplateNamespace('')`: Accepts a string value.
+- `setTemplateData(['','',...])`: Accepts an array of string.
+- `setLanguage('')`: Accepts a string value
 
 ## Examples
 
@@ -123,8 +122,8 @@ $user->notify(new ExampleInfobipNotification($invoice));
 namespace App\Notifications;
 
 use Illuminate\Notifications\Notification;
-use NotificationChannels\Infobip\InfobipChannel;
-use NotificationChannels\Infobip\InfobipMessage;
+use Caherrera\Laravel\Notifications\Channels\Infobip\Omni\InfobipChannel;
+use Caherrera\Laravel\Notifications\Channels\Infobip\Omni\InfobipMessage;
 
 class ExampleInfobipNotification extends Notification
 {
@@ -135,9 +134,13 @@ class ExampleInfobipNotification extends Notification
 
     public function toInfobip($notifiable)
     {
-        return (new InfobipMessage())
-            // Customize your msg content here
-            ->content("Your {$notifiable->service} account was approved!"); 
+        $message = new InfobipMessage();
+		$message->setTemplateName("infobip_test_hsm");
+		$message->setTemplateNamespace("whatsapp:hsm:it:infobip");
+		$message->setTemplateData(["Jhon","Snow"]);
+		$message->setLanguage("es");
+        return $message;
+        
     }
 }
 ```
