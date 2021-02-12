@@ -12,19 +12,21 @@ use infobip\api\model\omni\To;
 
 class Infobip
 {
+    const AUTH_BASIC  = 'basic';
+    const AUTH_APIKEY = 'apikey';
     public $client;
 
     public function __construct()
     {
         switch ($auth_method = config('services.infobip.auth')) {
-            case 'basic':
+            case static::AUTH_BASIC:
                 $auth = new BasicAuthConfiguration(
                     config('services.infobip.username'),
                     config('services.infobip.password'),
                     config('services.infobip.baseUrl')
                 );
                 break;
-            case 'apikey':
+            case static::AUTH_APIKEY:
                 $auth = new ApiKeyAuthConfiguration(config('services.infobip.apikey'), config('services.infobip.baseUrl'));
                 break;
             default:
