@@ -8,7 +8,6 @@ use infobip\api\configuration\ApiKeyAuthConfiguration;
 use infobip\api\configuration\BasicAuthConfiguration;
 use infobip\api\model\omni\Destination;
 use infobip\api\model\omni\send\OmniAdvancedRequest;
-use infobip\api\model\omni\send\WhatsAppData;
 use infobip\api\model\omni\To;
 
 class Infobip

@@ -3,10 +3,10 @@
 namespace Caherrera\Laravel\Notifications\Channels\Infobip\Omni;
 
 use Caherrera\Laravel\Notifications\Channels\Infobip\Omni\Exceptions\CouldNotSendNotification;
+use Exception;
 use Illuminate\Notifications\Events\NotificationFailed;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
-use infobip\api\model\omni\send\WhatsAppData;
 
 class InfobipChannel
 {
@@ -24,7 +24,7 @@ class InfobipChannel
      * Send the given notification.
      *
      * @param  mixed  $notifiable
-     * @param  \Illuminate\Notifications\Notification  $notification
+     * @param  Notification  $notification
      *
      * @return mixed
      */
@@ -39,7 +39,7 @@ class InfobipChannel
             }
 
             return $this->infobip->sendMessage($message, $to);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $event = new NotificationFailed($notifiable, $notification, 'infobip', ['message' => $exception->getMessage(), 'exception' => $exception]);
             if (function_exists('event')) { // Use event helper when possible to add Lumen support
                 event($event);
