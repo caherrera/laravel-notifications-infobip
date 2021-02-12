@@ -1,6 +1,6 @@
 {
   "name": "caherrera/laravel-notifications-infobip-omni",
-  "description": "A custom Laravel notifications channel for Infobip API OMNI. Based from princeton255/laravel-notifications-infobip",
+  "description": "A custom Laravel notifications channel for Infobip API OMNI. Based on princeton255/laravel-notifications-infobip",
   "type": "library",
   "license": "MIT",
   "authors": [

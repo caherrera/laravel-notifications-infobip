@@ -162,7 +162,7 @@ class User extends Authenticatable
 ```
 
 
-For more details you can check out [this link](https://laravel.com/docs/5.7/notifications#sending-notifications) on Laravel documentation
+For more details you can check out [this link](https://laravel.com/docs/7.x/notifications#sending-notifications) on Laravel documentation
 
 
 ## Testing
@@ -173,10 +173,11 @@ $ ./vendor/bin/phpunit
 
 ## Security
 
-If you discover any security related issues, please email princeton.mosha@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please help me and rise a ticket on issue tracker or simply fix it and I'll merge 
 
 ## Credits
 - Based on [Twilio SMS Notification channel](https://github.com/laravel-notification-channels/twilio) for Laravel
+- Based on [princeton255/laravel-notifications-infobip](https://github.com/tumainimosha/laravel-notifications-infobip) Infobip Notifications Channel for Laravel 5.5+
 - This project uses the [Infobip Client library](https://github.com/infobip/infobip-api-php-client), and wraps it for smooth use in Laravel
 
 ## License
