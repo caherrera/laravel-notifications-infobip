@@ -4,24 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "388d0e0d70be1b023488a601ecfe1657",
+    "content-hash": "6bb5ccc1d39ce530f76808cc7e3b46e8",
     "packages": [
         {
-            "name": "infobip/infobip-api-php-client",
+            "name": "caherrera/infobip-api-php-client",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/infobip/infobip-api-php-client.git",
-                "reference": "634f7241c9f567e679e0d871f76ccca8366e7f38"
+                "url": "https://github.com/caherrera/infobip-api-php-client.git",
+                "reference": "c444eee4ce40b728a0401bbee3a453dc6f16e173"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infobip/infobip-api-php-client/zipball/634f7241c9f567e679e0d871f76ccca8366e7f38",
-                "reference": "634f7241c9f567e679e0d871f76ccca8366e7f38",
+                "url": "https://api.github.com/repos/caherrera/infobip-api-php-client/zipball/c444eee4ce40b728a0401bbee3a453dc6f16e173",
+                "reference": "c444eee4ce40b728a0401bbee3a453dc6f16e173",
                 "shasum": ""
             },
             "require": {
                 "netresearch/jsonmapper": "3.1.1"
+            },
+            "replace": {
+                "infobip/infobip-api-php-client": "2.5.0"
             },
             "default-branch": true,
             "type": "library",
@@ -59,7 +62,8 @@
             ],
             "authors": [
                 {
-                    "email": "libraries@infobip.com"
+                    "name": "Carlos Herrera",
+                    "email": "caherrera@gmail.com"
                 }
             ],
             "description": "Infobip SMS library for PHP",
@@ -72,11 +76,9 @@
                 "sms"
             ],
             "support": {
-                "email": "support@infobip.com",
-                "issues": "https://github.com/infobip/infobip-api-php-client/issues",
-                "source": "https://github.com/infobip/infobip-api-php-client/tree/2.5.0"
+                "source": "https://github.com/caherrera/infobip-api-php-client/tree/master"
             },
-            "time": "2020-12-02T15:54:57+00:00"
+            "time": "2021-02-12T03:22:06+00:00"
         },
         {
             "name": "netresearch/jsonmapper",
@@ -5905,7 +5907,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "infobip/infobip-api-php-client": 20
+        "caherrera/infobip-api-php-client": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
