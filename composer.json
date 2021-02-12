@@ -1,36 +1,43 @@
 {
-    "name": "princeton255/laravel-notifications-infobip",
-    "description": "A custom Laravel notifications channel for Infobip SMS API",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Tumaini Mosha",
-            "email": "princeton.mosha@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=7.1",
-        "infobip/infobip-api-php-client": "dev-master"
-    },
-    "require-dev": {
-        "illuminate/notifications": ">=7.0@dev",
-        "illuminate/support": ">=7.0@dev",
-        "illuminate/events": ">=7.0@dev",
-        "illuminate/queue": ">=7.0@dev",
-        "phpunit/phpunit": ">=8.5@dev",
-        "friendsofphp/php-cs-fixer": ">=2.13"
-    },
-    "autoload": {
-        "psr-4": {
-            "NotificationChannels\\Infobip\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "NotificationChannels\\Infobip\\Tests\\": "tests/"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+  "name": "caherrera/laravel-notifications-infobip-omni",
+  "description": "A custom Laravel notifications channel for Infobip API OMNI. Based from princeton255/laravel-notifications-infobip",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Carlos Herrera",
+      "email": "caherrera@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "infobip/infobip-api-php-client": "dev-master"
+  },
+  "require-dev": {
+    "illuminate/notifications": "^7.0",
+    "illuminate/support": "^7.0",
+    "illuminate/events": "^7.0",
+    "illuminate/queue": "^7.0",
+    "phpunit/phpunit": "^8.5",
+    "friendsofphp/php-cs-fixer": "^2.13"
+  },
+  "autoload": {
+    "psr-4": {
+      "Caherrera\\Laravel\\Notifications\\Channels\\Infobip\\Omni\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Caherrera\\Laravel\\Notifications\\Channels\\Infobip\\Omni\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "lint": "php-cs-fixer fix --allow-risky=yes",
+    "pr": [
+      "php-cs-fixer fix --dry-run -vvv",
+      "phpunit --testdox --coverage-text"
+    ]
+  }
 }

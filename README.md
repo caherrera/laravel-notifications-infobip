@@ -1,8 +1,8 @@
 # Infobip Notifications Channel for Laravel 5.5+
 
-[![Latest Stable Version](https://poser.pugx.org/princeton255/laravel-notifications-infobip/v/stable)](https://packagist.org/packages/princeton255/laravel-notifications-infobip)
-[![License](https://poser.pugx.org/princeton255/laravel-notifications-infobip/license)](https://packagist.org/packages/princeton255/laravel-notifications-infobip)
-[![Total Downloads](https://poser.pugx.org/princeton255/laravel-notifications-infobip/downloads)](https://packagist.org/packages/princeton255/laravel-notifications-infobip)
+[![Latest Stable Version](https://poser.pugx.org/caherrera/laravel-notifications-infobip/v/stable)](https://packagist.org/packages/caherrera/laravel-notifications-infobip)
+[![License](https://poser.pugx.org/caherrera/laravel-notifications-infobip/license)](https://packagist.org/packages/caherrera/laravel-notifications-infobip)
+[![Total Downloads](https://poser.pugx.org/caherrera/laravel-notifications-infobip/downloads)](https://packagist.org/packages/caherrera/laravel-notifications-infobip)
 
 This package makes it easy to send Sms notifications using [Infobip service](https://dev.infobip.com/) with Laravel 5.5 and above.
 
@@ -25,7 +25,7 @@ This package makes it easy to send Sms notifications using [Infobip service](htt
 You can install the package via composer:
 
 ``` bash
-composer require princeton255/laravel-notifications-infobip
+composer require caherrera/laravel-notifications-infobip
 ```
 
 ### Setting up your Infobip account

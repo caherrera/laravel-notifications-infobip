@@ -1,10 +1,10 @@
 <?php
 
-namespace NotificationChannels\Infobip;
+namespace Caherrera\Laravel\Notifications\Channels\Infobip\Omni;
 
+use Caherrera\Laravel\Notifications\Channels\Infobip\Omni\Exceptions\CouldNotSendNotification;
 use Illuminate\Notifications\Events\NotificationFailed;
 use Illuminate\Notifications\Notification;
-use NotificationChannels\Infobip\Exceptions\CouldNotSendNotification;
 
 class InfobipChannel
 {
@@ -37,6 +37,7 @@ class InfobipChannel
             if (!$message instanceof InfobipMessage) {
                 throw CouldNotSendNotification::invalidMessageObject($message);
             }
+
             return $this->infobip->sendMessage($message, $to);
         } catch (\Exception $exception) {
             $event = new NotificationFailed($notifiable, $notification, 'infobip', ['message' => $exception->getMessage(), 'exception' => $exception]);

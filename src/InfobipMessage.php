@@ -1,6 +1,6 @@
 <?php
 
-namespace NotificationChannels\Infobip;
+namespace Caherrera\Laravel\Notifications\Channels\Infobip\Omni;
 
 class InfobipMessage
 {
@@ -33,6 +33,7 @@ class InfobipMessage
     public function content($content)
     {
         $this->content = $content;
+
         return $this;
     }
 
@@ -45,6 +46,7 @@ class InfobipMessage
     public function from($from)
     {
         $this->from = $from;
+
         return $this;
     }
 }

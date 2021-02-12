@@ -1,9 +1,9 @@
 <?php
 
-namespace NotificationChannels\Infobip;
+namespace Caherrera\Laravel\Notifications\Channels\Infobip\Omni;
 
-use infobip\api\configuration\BasicAuthConfiguration as AuthConfig;
 use infobip\api\client\SendSingleTextualSms as Sms;
+use infobip\api\configuration\BasicAuthConfiguration as AuthConfig;
 use infobip\api\model\sms\mt\send\textual\SMSTextualRequest as SmsRequest;
 
 class Infobip

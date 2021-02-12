@@ -1,8 +1,8 @@
 <?php
 
-namespace NotificationChannels\Infobip\Exceptions;
+namespace Caherrera\Laravel\Notifications\Channels\Infobip\Omni\Exceptions;
 
-use NotificationChannels\Infobip\InfobipMessage;
+use Caherrera\Laravel\Notifications\Channels\Infobip\Omni\InfobipMessage;
 
 class CouldNotSendNotification extends BaseException
 {
@@ -18,15 +18,17 @@ class CouldNotSendNotification extends BaseException
     }
 
     /**
-     * @param mixed $message
+     * @param  mixed  $message
      *
      * @return CouldNotSendNotification
      */
     public static function invalidMessageObject($message)
     {
         $className = get_class($message) ?: 'Unknown';
+
         return new static(
             "Notification was not sent. Message object class `{$className}` is invalid. It should
-            be `".InfobipMessage::class.'`');
+            be `" . InfobipMessage::class . '`'
+        );
     }
 }
