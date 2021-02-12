@@ -2,9 +2,14 @@
 
 namespace Caherrera\Laravel\Notifications\Channels\Infobip\Omni;
 
-use infobip\api\client\SendSingleTextualSms as Sms;
-use infobip\api\configuration\BasicAuthConfiguration as AuthConfig;
-use infobip\api\model\sms\mt\send\textual\SMSTextualRequest as SmsRequest;
+use Caherrera\Laravel\Notifications\Channels\Infobip\Omni\Exceptions\AuthMethodException;
+use infobip\api\client\SendAdvancedOmniMessage;
+use infobip\api\configuration\ApiKeyAuthConfiguration;
+use infobip\api\configuration\BasicAuthConfiguration;
+use infobip\api\model\omni\Destination;
+use infobip\api\model\omni\send\OmniAdvancedRequest;
+use infobip\api\model\omni\send\WhatsAppData;
+use infobip\api\model\omni\To;
 
 class Infobip
 {
@@ -12,22 +17,34 @@ class Infobip
 
     public function __construct()
     {
-        $auth = new AuthConfig(
-            config('services.infobip.username'),
-            config('services.infobip.password'),
-            config('services.infobip.baseUrl')
-        );
-
-        $this->client = new Sms($auth);
+        switch ($auth_method = config('services.infobip.auth')) {
+            case 'basic':
+                $auth = new BasicAuthConfiguration(
+                    config('services.infobip.username'),
+                    config('services.infobip.password'),
+                    config('services.infobip.baseUrl')
+                );
+                break;
+            case 'apikey':
+                $auth = new ApiKeyAuthConfiguration(config('services.infobip.apikey'), config('services.infobip.baseUrl'));
+                break;
+            default:
+                throw new AuthMethodException($auth_method);
+        }
+        $this->client = new SendAdvancedOmniMessage($auth);
     }
 
-    public function sendMessage(InfobipMessage $message, string $to)
+    public function sendMessage(WhatsAppData $whatsapp, string $to)
     {
-        $smsRequest = new SmsRequest();
-        $smsRequest->setFrom($message->from ?? config('services.infobip.from'));
-        $smsRequest->setTo($to);
-        $smsRequest->setText($message->content);
+        $To          = new To();
+        $destination = new Destination();
+        $request     = new OmniAdvancedRequest();
+        $To->setPhoneNumber(str_ireplace('+', '', $to));
+        $destination->setTo($To);
+        $request->setScenarioKey(config('services.infobip.scenario_key'));
+        $request->setDestinations([$destination]);
+        $request->setWhatsApp($whatsapp);
 
-        return $this->client->execute($smsRequest);
+        return $this->client->execute($request);
     }
 }

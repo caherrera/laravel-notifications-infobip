@@ -4,7 +4,9 @@ namespace Caherrera\Laravel\Notifications\Channels\Infobip\Omni;
 
 use Caherrera\Laravel\Notifications\Channels\Infobip\Omni\Exceptions\CouldNotSendNotification;
 use Illuminate\Notifications\Events\NotificationFailed;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
+use infobip\api\model\omni\send\WhatsAppData;
 
 class InfobipChannel
 {
@@ -21,20 +23,18 @@ class InfobipChannel
     /**
      * Send the given notification.
      *
-     * @param  mixed $notifiable
-     * @param  \Illuminate\Notifications\Notification $notification
+     * @param  mixed  $notifiable
+     * @param  \Illuminate\Notifications\Notification  $notification
+     *
      * @return mixed
      */
     public function send($notifiable, Notification $notification)
     {
         try {
-            $to = $this->getTo($notifiable);
+            $to      = $this->getTo($notifiable);
             $message = $notification->toInfobip($notifiable);
 
-            if (is_string($message)) {
-                $message = new InfobipMessage($message);
-            }
-            if (!$message instanceof InfobipMessage) {
+            if ( ! $message instanceof WhatsAppData) {
                 throw CouldNotSendNotification::invalidMessageObject($message);
             }
 
@@ -52,11 +52,12 @@ class InfobipChannel
     /**
      * Get the address to send a notification to.
      *
-     * @param mixed $notifiable
+     * @param  mixed  $notifiable
+     *
      * @return mixed
      * @throws CouldNotSendNotification
      */
-    protected function getTo($notifiable)
+    protected function getTo(Notifiable $notifiable)
     {
         if ($notifiable->routeNotificationFor('infobip')) {
             return $notifiable->routeNotificationFor('infobip');
