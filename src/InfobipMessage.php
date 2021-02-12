@@ -2,51 +2,22 @@
 
 namespace Caherrera\Laravel\Notifications\Channels\Infobip\Omni;
 
-class InfobipMessage
-{
-    /**
-     * @var string
-     */
-    public $content;
+use infobip\api\model\omni\send\WhatsAppData;
 
-    /**
-     * @var string
-     */
-    public $from;
+class InfobipMessage extends WhatsAppData
+{
 
     /**
      * Create a new message instance.
      *
-     * @param  string $content
+     * @param  array  $content
      */
-    public function __construct($content = '')
+    public function __construct($content = [])
     {
-        $this->content = $content;
+        $this->setTemplateName($content['templateName'] ?? null);
+        $this->setTemplateNamespace($content['templateNamespace'] ?? null);
+        $this->setTemplateData($content['templateData'] ?? null);
+        $this->setLanguage($content['language'] ?? null);
     }
 
-    /**
-     * Set the message content.
-     *
-     * @param  string $content
-     * @return $this
-     */
-    public function content($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Set the phone number the message should be sent from.
-     *
-     * @param  string $from
-     * @return $this
-     */
-    public function from($from)
-    {
-        $this->from = $from;
-
-        return $this;
-    }
 }

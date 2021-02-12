@@ -34,7 +34,7 @@ class Infobip
         $this->client = new SendAdvancedOmniMessage($auth);
     }
 
-    public function sendMessage(WhatsAppData $whatsapp, string $to)
+    public function sendMessage(InfobipMessage $message, string $to)
     {
         $To          = new To();
         $destination = new Destination();
@@ -43,7 +43,7 @@ class Infobip
         $destination->setTo($To);
         $request->setScenarioKey(config('services.infobip.scenario_key'));
         $request->setDestinations([$destination]);
-        $request->setWhatsApp($whatsapp);
+        $request->setWhatsApp($message);
 
         return $this->client->execute($request);
     }
