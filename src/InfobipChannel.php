@@ -5,7 +5,7 @@ namespace Caherrera\Laravel\Notifications\Channels\Infobip\Omni;
 use Caherrera\Laravel\Notifications\Channels\Infobip\Omni\Exceptions\CouldNotSendNotification;
 use Exception;
 use Illuminate\Notifications\Events\NotificationFailed;
-use Illuminate\Notifications\Notifiable;
+
 use Illuminate\Notifications\Notification;
 
 class InfobipChannel
@@ -57,7 +57,7 @@ class InfobipChannel
      * @return mixed
      * @throws CouldNotSendNotification
      */
-    protected function getTo(Notifiable $notifiable)
+    protected function getTo($notifiable)
     {
         if ($notifiable->routeNotificationFor('infobip')) {
             return $notifiable->routeNotificationFor('infobip');
