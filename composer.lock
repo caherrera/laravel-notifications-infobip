@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "caherrera/infobip-api-php-client",
-            "version": "2.6.3",
+            "version": "2.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caherrera/infobip-api-php-client.git",
-                "reference": "4f0e0dbba84a7e5e82b32265280a427998d57792"
+                "reference": "c5ef7428165e7c8068ea1014b47559266e69c478"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caherrera/infobip-api-php-client/zipball/4f0e0dbba84a7e5e82b32265280a427998d57792",
-                "reference": "4f0e0dbba84a7e5e82b32265280a427998d57792",
+                "url": "https://api.github.com/repos/caherrera/infobip-api-php-client/zipball/c5ef7428165e7c8068ea1014b47559266e69c478",
+                "reference": "c5ef7428165e7c8068ea1014b47559266e69c478",
                 "shasum": ""
             },
             "require": {
@@ -75,9 +75,9 @@
                 "sms"
             ],
             "support": {
-                "source": "https://github.com/caherrera/infobip-api-php-client/tree/2.6.3"
+                "source": "https://github.com/caherrera/infobip-api-php-client/tree/2.6.4"
             },
-            "time": "2021-03-02T22:34:02+00:00"
+            "time": "2021-03-02T22:45:54+00:00"
         },
         {
             "name": "netresearch/jsonmapper",
