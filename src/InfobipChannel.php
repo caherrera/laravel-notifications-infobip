@@ -34,7 +34,7 @@ class InfobipChannel
             $to      = $this->getTo($notifiable);
             $message = $notification->toInfobip($notifiable);
 
-            if ( ! $message instanceof InfobipMessage) {
+            if ( ! $message instanceof InfobipWhatsAppInterface) {
                 throw CouldNotSendNotification::invalidMessageObject($message);
             }
 
