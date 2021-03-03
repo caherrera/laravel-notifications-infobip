@@ -35,7 +35,7 @@ class Infobip
         $this->client = new SendAdvancedOmniMessage($auth);
     }
 
-    public function sendMessage(InfobipMessage $message, string $to)
+    public function sendMessage(InfobipWhatsAppInterface $message, string $to)
     {
         $To          = new To();
         $destination = new Destination();
